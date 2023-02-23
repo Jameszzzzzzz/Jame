@@ -29,23 +29,23 @@ def BP():
     model.fit(X_train, y_train)
     save_model(model)
 
-    gender = st.selectbox('Gender', ['Male', 'Female'])
-    height = st.number_input('Height (cm)', 60, 250, 170)
-    weight = st.number_input('Weight (kg)', 1, 150, 75)
+    gender = st.selectbox('Gender🧏🧏‍♀️', ['Male🧏‍', 'Female🧏‍♀️'])
+    height = st.number_input('Height❕ (cm)', 60, 250, 170)
+    weight = st.number_input('Weight🥓 (kg)', 1, 150, 75)
     gender_num = 1 if gender == 'Male' else 0
     predb = st.button('Predict')
     if predb:
         model = load_model()
         predict = model.predict([[gender_num, height, weight]])
         if predict[0] == 0:
-            st.markdown('### Your body health is :orange[Extremely Weak]')
+            st.warning('### Your body health is :orange[Extremely Weak🤏]')
         elif predict[0] == 1:
-            st.markdown('### Your body health is :orange[Weak]')
+            st.warning('### Your body health is :orange[Weak]😿')
         elif predict[0] == 2:
-            st.markdown('### Your body health is :green[Normal]')
+            st.success('### Your body health is :green[Normal👏]')
         elif predict[0] == 3:
-            st.markdown('### Your body health is :red[Overweight]')
+            st.error('### Your body health is :red[Overweight🥲]')
         elif predict[0] == 4:
-            st.markdown('### Your body health is :red[Obesity]')
+            st.error('### Your body health is :red[Obesity😢]')
         else:
-            st.markdown('### Your body health is :red[Extremely Obesity]')
+            st.error('### Your body health is :red[Extremely Obesity😭]')
